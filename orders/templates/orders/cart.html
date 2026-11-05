@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="{% url 'restaurant_list' %}">⚡ QuickBite</a>
+        <div class="nav-links"><a href="{% url 'restaurant_list' %}">Explore</a></div>
+    </nav>
+    <div class="container" style="max-width: 650px;">
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 24px;">Your Cart 🛒</h2>
+        {% if cart %}
+            <div class="card" style="margin-bottom: 24px;">
+                {% for id, item in cart.items %}
+                    <div style="display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border);">
+                        <div>
+                            <strong style="font-size: 1.05rem;">{{ item.name }}</strong>
+                            <div style="color: var(--text-muted); font-size: 0.85rem;">Quantity: {{ item.quantity }}</div>
+                        </div>
+                        <div style="font-weight: 700; color: var(--accent);">${% widthratio item.price 1 item.quantity %}</div>
+                    </div>
+                {% endfor %}
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 1.2rem; font-weight: 800;">
+                    <span>Total Amount</span>
+                    <span style="color: var(--primary);">${{ total }}</span>
+                </div>
+            </div>
+            <a href="{% url 'checkout' %}" class="btn-submit" style="text-align: center; text-decoration: none; display: block;">Proceed to Checkout →</a>
+        {% else %}
+            <div class="card" style="text-align: center; padding: 60px 20px;">
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-weight: 600;">Your cart is currently empty.</p>
+                <a href="{% url 'restaurant_list' %}" class="btn-card" style="background: var(--primary); color: white; padding: 10px 24px;">Browse Restaurants</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

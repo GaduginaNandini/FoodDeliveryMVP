@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="form-box" style="width: 100%;">
+        <h2>Welcome to QuickBite</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Continue</button>
+        </form>
+        <div style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
+            <a href="{% url 'restaurant_list' %}" style="color: var(--text-main); text-decoration: none; font-weight: 600;">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
