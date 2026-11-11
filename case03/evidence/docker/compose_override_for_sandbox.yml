@@ -1,0 +1,7 @@
+services:
+  web:
+    build:
+      network: host
+      args:
+        HTTPS_PROXY: http://127.0.0.1:39489
+        https_proxy: http://127.0.0.1:39489

@@ -1,0 +1,23 @@
+{
+ "restaurants_on_home": 10,
+ "menu_status": [
+  200
+ ],
+ "items_on_menu": 2,
+ "horizontal_overflow_375px": false,
+ "images_without_alt": 0,
+ "images_total": 3,
+ "feedback_text_after_add": [
+  "Fast Food"
+ ],
+ "cart_link_present_on_menu": 1,
+ "cart_badge_text": [
+  "Cart \ud83d\uded2"
+ ],
+ "add_buttons_are_links_GET": "/orders/cart/add/21/",
+ "keyboard_focus_visible_tag": "A",
+ "qty_after_1+3_adds": [
+  "1",
+  "3"
+ ]
+}

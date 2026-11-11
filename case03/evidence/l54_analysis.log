@@ -1,0 +1,22 @@
+== total_manual
+FAILED (failures=2, errors=1)
+---------------------------------------------------
+TOTAL                12      0      2      0   100%
+total_manual.py
+    F 5:0 cart_total - A (4)
+total_manual.py - A (66.83)
+total_manual.py:1:0: C0301: Line too long (113/100) (line-too-long)
+total_manual.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+total_manual.py:2:0: W0611: Unused Decimal imported from decimal (unused-import)
+Your code has been rated at 7.50/10
+== total_ai
+OK
+-----------------------------------------------
+TOTAL            10      0      0      0   100%
+total_ai.py
+    F 7:0 _quantity - A (3)
+    F 16:0 cart_total - A (3)
+total_ai.py - A (66.69)
+total_ai.py:8:0: C0301: Line too long (104/100) (line-too-long)
+total_ai.py:19:0: C0301: Line too long (111/100) (line-too-long)
+Your code has been rated at 8.00/10

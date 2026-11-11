@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBite — Cinematic Food Delivery</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="{% url 'restaurant_list' %}">⚡ QuickBite</a>
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <span style="color: var(--text-muted); font-size: 0.9rem;">Hey, <strong style="color: white;">{{ user.username }}</strong></span>
+                <a href="{% url 'order_history' %}">My Orders</a>
+                <a href="{% url 'view_cart' %}">Cart 🛒</a>
+                <a href="{% url 'logout' %}" style="color: #FF4757;">Logout</a>
+            {% else %}
+                <a href="{% url 'view_cart' %}">Cart 🛒</a>
+                <a href="{% url 'login' %}">Sign In</a>
+                <a href="{% url 'register' %}" class="btn-primary">Get Started</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-banner">
+            <h1 class="hero-title">Delivering happiness to your door.</h1>
+            <p class="hero-subtitle">Explore 10 top-rated partner restaurants and order your favorite meals instantly.</p>
+        </div>
+
+        <div class="grid">
+            {% for r in restaurants %}
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="{{ r.image_url }}" alt="{{ r.name }}">
+                    </div>
+                    <div class="card-content">
+                        <span class="badge">{{ r.cuisine }}</span>
+                        <h3>{{ r.name }}</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">{{ r.description }}</p>
+                        <div class="card-footer">
+                            <span class="rating">★ {{ r.rating }} <small style="color: var(--text-muted); font-weight: 500;">({{ r.delivery_time }})</small></span>
+                            <a class="btn-card" href="{% url 'restaurant_detail' r.id %}">View Menu →</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

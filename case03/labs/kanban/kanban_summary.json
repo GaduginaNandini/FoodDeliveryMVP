@@ -1,0 +1,486 @@
+{
+ "summary": {
+  "cards": 12,
+  "avg_lead": 11.083333333333334,
+  "avg_cycle": 7.75,
+  "finished_on": "2026-11-02",
+  "avg_backlog": 3.3333333333333335,
+  "avg_design": 3.25,
+  "avg_build": 2.9166666666666665,
+  "avg_test": 1.5833333333333333,
+  "max_wip": {
+   "Design": 3,
+   "Build": 3,
+   "Test": 2
+  },
+  "days_at_wip_limit": {
+   "Design": 12,
+   "Build": 4,
+   "Test": 0
+  },
+  "throughput_per_week": 3.0
+ },
+ "snap": [
+  {
+   "Backlog": [
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08"
+   ],
+   "Design": [
+    "US-01",
+    "US-02",
+    "US-09"
+   ],
+   "Build": [],
+   "Test": [],
+   "Done": []
+  },
+  {
+   "Backlog": [
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08"
+   ],
+   "Design": [
+    "US-02",
+    "US-09",
+    "US-03"
+   ],
+   "Build": [
+    "US-01"
+   ],
+   "Test": [],
+   "Done": []
+  },
+  {
+   "Backlog": [
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08"
+   ],
+   "Design": [
+    "US-09",
+    "US-03",
+    "US-05"
+   ],
+   "Build": [
+    "US-01",
+    "US-02"
+   ],
+   "Test": [],
+   "Done": []
+  },
+  {
+   "Backlog": [
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08",
+    "TASK-01"
+   ],
+   "Design": [
+    "US-03",
+    "US-05",
+    "US-04"
+   ],
+   "Build": [
+    "US-02",
+    "US-09"
+   ],
+   "Test": [
+    "US-01"
+   ],
+   "Done": []
+  },
+  {
+   "Backlog": [
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08",
+    "TASK-01"
+   ],
+   "Design": [
+    "US-03",
+    "US-05",
+    "US-04"
+   ],
+   "Build": [
+    "US-09"
+   ],
+   "Test": [
+    "US-02"
+   ],
+   "Done": [
+    "US-01"
+   ]
+  },
+  {
+   "Backlog": [
+    "US-06",
+    "US-07",
+    "US-08",
+    "TASK-01"
+   ],
+   "Design": [
+    "US-05",
+    "US-04",
+    "US-10"
+   ],
+   "Build": [
+    "US-09",
+    "US-03"
+   ],
+   "Test": [],
+   "Done": [
+    "US-01",
+    "US-02"
+   ]
+  },
+  {
+   "Backlog": [
+    "US-07",
+    "US-08",
+    "TASK-01"
+   ],
+   "Design": [
+    "US-04",
+    "US-10",
+    "US-06"
+   ],
+   "Build": [
+    "US-03",
+    "US-05"
+   ],
+   "Test": [
+    "US-09"
+   ],
+   "Done": [
+    "US-01",
+    "US-02"
+   ]
+  },
+  {
+   "Backlog": [
+    "US-08",
+    "TASK-01"
+   ],
+   "Design": [
+    "US-10",
+    "US-06",
+    "US-07"
+   ],
+   "Build": [
+    "US-05",
+    "US-04"
+   ],
+   "Test": [
+    "US-03"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09"
+   ]
+  },
+  {
+   "Backlog": [
+    "TASK-01",
+    "BUG-01"
+   ],
+   "Design": [
+    "US-06",
+    "US-07",
+    "US-08"
+   ],
+   "Build": [
+    "US-04",
+    "US-10"
+   ],
+   "Test": [
+    "US-03",
+    "US-05"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09"
+   ]
+  },
+  {
+   "Backlog": [
+    "BUG-01"
+   ],
+   "Design": [
+    "US-07",
+    "US-08",
+    "TASK-01"
+   ],
+   "Build": [
+    "US-04",
+    "US-10",
+    "US-06"
+   ],
+   "Test": [
+    "US-05"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [
+    "US-08",
+    "TASK-01",
+    "BUG-01"
+   ],
+   "Build": [
+    "US-06",
+    "US-07"
+   ],
+   "Test": [
+    "US-04",
+    "US-10"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [
+    "US-08",
+    "TASK-01",
+    "BUG-01"
+   ],
+   "Build": [
+    "US-06",
+    "US-07"
+   ],
+   "Test": [
+    "US-10"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [
+    "TASK-01",
+    "BUG-01"
+   ],
+   "Build": [
+    "US-06",
+    "US-07",
+    "US-08"
+   ],
+   "Test": [
+    "US-10"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [
+    "BUG-01"
+   ],
+   "Build": [
+    "US-08",
+    "TASK-01"
+   ],
+   "Test": [
+    "US-06",
+    "US-07"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [
+    "US-08",
+    "TASK-01",
+    "BUG-01"
+   ],
+   "Test": [
+    "US-07"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [
+    "US-08",
+    "TASK-01",
+    "BUG-01"
+   ],
+   "Test": [],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [
+    "US-08",
+    "BUG-01"
+   ],
+   "Test": [
+    "TASK-01"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [
+    "BUG-01"
+   ],
+   "Test": [
+    "US-08"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "TASK-01"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [],
+   "Test": [
+    "US-08",
+    "BUG-01"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "TASK-01"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [],
+   "Test": [
+    "BUG-01"
+   ],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08",
+    "TASK-01"
+   ]
+  },
+  {
+   "Backlog": [],
+   "Design": [],
+   "Build": [],
+   "Test": [],
+   "Done": [
+    "US-01",
+    "US-02",
+    "US-09",
+    "US-03",
+    "US-05",
+    "US-04",
+    "US-10",
+    "US-06",
+    "US-07",
+    "US-08",
+    "TASK-01",
+    "BUG-01"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+test_S1_save10  ... ok
+test_S2_flat5  ... ok
+test_S3_invalid_coupon  ... ok
+Ran 3 tests in 11.139s
+OK

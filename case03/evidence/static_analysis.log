@@ -1,0 +1,107 @@
+################ orig
+orders/views.py: code lines=81, duplicated lines=4, duplication=4.9%
+   duplicated block starting at lines [44, 72]
+-- radon cc
+    F 65:0 checkout - B (9)
+    F 21:0 remove_from_cart - A (4)
+    F 38:0 view_cart - A (4)
+    F 6:0 add_to_cart - A (3)
+    F 104:0 order_history - A (1)
+    F 4:0 restaurant_list - A (1)
+    F 8:0 restaurant_detail - A (1)
+Average complexity: A (3.2857142857142856)
+-- radon mi
+orders/views.py - A (49.30)
+-- bandit
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'django-insecure-3!68r1^ojt$^_pb#uxtq87ggz4+t@x(7cxzkj%$(5gzl#n&*y$'
+   Severity: Low   Confidence: Medium
+   Location: config/settings.py:23:13
+	Total issues (by severity):
+		Low: 1
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Low: 0
+		Medium: 1
+		High: 0
+-- pylint
+orders/admin.py:1:0: W0611: Unused admin imported from django.contrib (unused-import)
+orders/tests.py:1:0: W0611: Unused TestCase imported from django.test (unused-import)
+orders/models.py:6:0: C0301: Line too long (107/100) (line-too-long)
+orders/models.py:24:0: C0304: Final newline missing (missing-final-newline)
+orders/views.py:9:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:14:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:16:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:24:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:28:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:33:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:43:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:48:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:59:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:62:0: C0301: Line too long (102/100) (line-too-long)
+orders/views.py:69:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:80:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:85:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:92:0: C0301: Line too long (106/100) (line-too-long)
+orders/views.py:96:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:100:0: C0303: Trailing whitespace (trailing-whitespace)
+orders/views.py:106:0: C0304: Final newline missing (missing-final-newline)
+orders/views.py:1:0: W0611: Unused get_object_or_404 imported from django.shortcuts (unused-import)
+orders/urls.py:10:0: C0304: Final newline missing (missing-final-newline)
+restaurants/tests.py:1:0: W0611: Unused TestCase imported from django.test (unused-import)
+restaurants/models.py:8:0: C0301: Line too long (115/100) (line-too-long)
+restaurants/models.py:22:0: C0301: Line too long (112/100) (line-too-long)
+restaurants/models.py:26:0: C0304: Final newline missing (missing-final-newline)
+restaurants/models.py:13:4: E0307: __str__ does not return str (invalid-str-returned)
+restaurants/models.py:25:4: E0307: __str__ does not return str (invalid-str-returned)
+restaurants/views.py:11:0: C0304: Final newline missing (missing-final-newline)
+################ fixed
+orders/views.py: code lines=118, duplicated lines=0, duplication=0.0%
+-- radon cc
+    F 114:0 checkout - B (7)
+    F 30:0 _cart_lines - A (4)
+    F 48:0 discount_for - A (4)
+    F 149:0 register - A (4)
+    F 20:0 _qty - A (3)
+    F 58:0 add_to_cart - A (3)
+    F 71:0 remove_from_cart - A (3)
+    F 85:0 apply_coupon - A (3)
+    F 97:0 view_cart - A (1)
+    F 144:0 order_history - A (1)
+    F 4:0 restaurant_list - A (1)
+    F 8:0 restaurant_detail - A (1)
+Average complexity: A (2.9166666666666665)
+-- radon mi
+orders/views.py - A (46.83)
+-- bandit
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'django-insecure-3!68r1^ojt$^_pb#uxtq87ggz4+t@x(7cxzkj%$(5gzl#n&*y$'
+   Severity: Low   Confidence: Medium
+   Location: config/settings.py:23:13
+	Total issues (by severity):
+		Low: 1
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Low: 0
+		Medium: 1
+		High: 0
+-- pylint
+orders/admin.py:1:0: W0611: Unused admin imported from django.contrib (unused-import)
+orders/tests.py:1:0: W0611: Unused TestCase imported from django.test (unused-import)
+orders/models.py:6:0: C0301: Line too long (107/100) (line-too-long)
+orders/models.py:24:0: C0304: Final newline missing (missing-final-newline)
+orders/urls.py:12:0: C0304: Final newline missing (missing-final-newline)
+restaurants/tests.py:1:0: W0611: Unused TestCase imported from django.test (unused-import)
+restaurants/models.py:8:0: C0301: Line too long (115/100) (line-too-long)
+restaurants/models.py:22:0: C0301: Line too long (112/100) (line-too-long)
+restaurants/models.py:26:0: C0304: Final newline missing (missing-final-newline)
+restaurants/models.py:13:4: E0307: __str__ does not return str (invalid-str-returned)
+restaurants/models.py:25:4: E0307: __str__ does not return str (invalid-str-returned)
+restaurants/views.py:11:0: C0304: Final newline missing (missing-final-newline)
+restaurants/views.py:11:0: C0301: Line too long (118/100) (line-too-long)
+restaurants/views.py:2:0: W0611: Unused FoodItem imported from models (unused-import)
+restaurants/urls.py:7:0: C0304: Final newline missing (missing-final-newline)
+config/urls.py:10:0: C0301: Line too long (104/100) (line-too-long)
+config/urls.py:11:0: C0301: Line too long (107/100) (line-too-long)
+config/urls.py:12:0: C0304: Final newline missing (missing-final-newline)
+Your code has been rated at 8.76/10 (previous run: 7.56/10, +1.20)

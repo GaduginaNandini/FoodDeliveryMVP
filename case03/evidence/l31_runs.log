@@ -1,0 +1,27 @@
+--- v3: AI's own tests
+ERROR: test_add_once (labs_tests.test_ai_own.AddToCartTests.test_add_once)
+django.db.utils.IntegrityError: NOT NULL constraint failed: restaurants_fooditem.restaurant_id
+ERROR: test_add_twice (labs_tests.test_ai_own.AddToCartTests.test_add_twice)
+django.db.utils.IntegrityError: NOT NULL constraint failed: restaurants_fooditem.restaurant_id
+ERROR: test_unknown_item_returns_404 (labs_tests.test_ai_own.AddToCartTests.test_unknown_item_returns_404)
+--- v3: our 7 characterization tests (GET links, legacy dict ...)
+ERROR: test_legacy_dict_value_is_upgraded (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_legacy_dict_value_is_upgraded)
+FAIL: test_unknown_id_behaviour_is_preserved (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_unknown_id_behaviour_is_preserved)
+Ran 7 tests in 1.889s
+FAILED (failures=1, errors=1)
+--- v4: AI's own tests
+ERROR: test_add_once (labs_tests.test_ai_own.AddToCartTests.test_add_once)
+django.db.utils.IntegrityError: NOT NULL constraint failed: restaurants_fooditem.restaurant_id
+ERROR: test_add_twice (labs_tests.test_ai_own.AddToCartTests.test_add_twice)
+django.db.utils.IntegrityError: NOT NULL constraint failed: restaurants_fooditem.restaurant_id
+ERROR: test_unknown_item_returns_404 (labs_tests.test_ai_own.AddToCartTests.test_unknown_item_returns_404)
+--- v4: our 7 characterization tests (GET links, legacy dict ...)
+ERROR: test_redirects_back_to_referer (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_redirects_back_to_referer)
+ERROR: test_redirects_to_list_without_referer (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_redirects_to_list_without_referer)
+FAIL: test_legacy_dict_value_is_upgraded (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_legacy_dict_value_is_upgraded)
+FAIL: test_new_item_starts_at_1 (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_new_item_starts_at_1)
+FAIL: test_other_items_untouched (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_other_items_untouched)
+FAIL: test_repeat_add_increments (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_repeat_add_increments)
+FAIL: test_unknown_id_behaviour_is_preserved (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_unknown_id_behaviour_is_preserved)
+Ran 7 tests in 1.947s
+FAILED (failures=5, errors=2)

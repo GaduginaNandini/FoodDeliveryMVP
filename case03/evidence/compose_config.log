@@ -1,0 +1,45 @@
+name: fixed
+services:
+  db:
+    environment:
+      POSTGRES_DB: foodmvp
+      POSTGRES_PASSWORD: x
+      POSTGRES_USER: foodmvp
+    image: postgres:16-alpine
+    networks:
+      default: null
+    volumes:
+      - type: volume
+        source: pgdata
+        target: /var/lib/postgresql/data
+        volume: {}
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U foodmvp -d foodmvp
+      timeout: 3s
+      interval: 3s
+      retries: 15
+  web:
+    command:
+      - sh
+      - -c
+      - |-
+        python manage.py migrate --noinput &&
+               python manage.py seed_restaurants &&
+               python manage.py runserver 0.0.0.0:8000
+    environment:
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      POSTGRES_DB: foodmvp
+      POSTGRES_HOST: db
+      POSTGRES_PASSWORD: x
+      POSTGRES_USER: foodmvp
+    networks:
+      default: null
+    build:
+      context: /tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/fixed
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+        required: true

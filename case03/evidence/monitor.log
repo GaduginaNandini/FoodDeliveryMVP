@@ -1,0 +1,20 @@
+== orig (DB = copy of your db.sqlite3, plus 1 test order placed by this script)
+orders already in your db before probe: 1 [('', '', '0.00')]
+checkout status 302
+metric                               value  status
+page_load_p95_ms                       3.1  OK
+http_5xx_rate_pct                      0.0  OK
+checkout_success_pct                 100.0  OK
+orders_missing_details_pct           100.0  CRITICAL
+orders_zero_total_pct                100.0  CRITICAL
+cart_to_order_pct                     None  n/a (needs analytics)
+== fixed (DB = copy of your db.sqlite3, plus 1 test order placed by this script)
+orders already in your db before probe: 1 [('', '', '0.00')]
+checkout status 302
+metric                               value  status
+page_load_p95_ms                       3.8  OK
+http_5xx_rate_pct                      0.0  OK
+checkout_success_pct                 100.0  OK
+orders_missing_details_pct            50.0  CRITICAL
+orders_zero_total_pct                 50.0  CRITICAL
+cart_to_order_pct                     None  n/a (needs analytics)

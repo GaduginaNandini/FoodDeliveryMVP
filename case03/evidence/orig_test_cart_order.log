@@ -1,0 +1,204 @@
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+test_IT_01_browse_menu_add_view_cart (labs_tests.test_cart_order.IntegrationTests.test_IT_01_browse_menu_add_view_cart) ... ok
+test_IT_02_full_order_flow_and_history (labs_tests.test_cart_order.IntegrationTests.test_IT_02_full_order_flow_and_history) ... FAIL
+test_IT_03_history_shows_only_own_orders (labs_tests.test_cart_order.IntegrationTests.test_IT_03_history_shows_only_own_orders) ... ok
+test_IT_04_checkout_page_shows_total (labs_tests.test_cart_order.IntegrationTests.test_IT_04_checkout_page_shows_total) ... FAIL
+test_IT_05_cannot_add_unavailable_item (labs_tests.test_cart_order.IntegrationTests.test_IT_05_cannot_add_unavailable_item) ... FAIL
+test_IT_06_cannot_add_nonexistent_item (labs_tests.test_cart_order.IntegrationTests.test_IT_06_cannot_add_nonexistent_item) ... FAIL
+test_IT_07_home_page_loads_for_anonymous_visitor (labs_tests.test_cart_order.IntegrationTests.test_IT_07_home_page_loads_for_anonymous_visitor) ... ERROR
+test_IT_08_login_page_loads (labs_tests.test_cart_order.IntegrationTests.test_IT_08_login_page_loads) ... ERROR
+test_IT_09_empty_delivery_details_rejected (labs_tests.test_cart_order.IntegrationTests.test_IT_09_empty_delivery_details_rejected) ... FAIL
+test_UT_01_qty_reads_int_and_legacy_dict (labs_tests.test_cart_order.UnitTests.test_UT_01_qty_reads_int_and_legacy_dict) ... ERROR
+test_UT_02_order_str (labs_tests.test_cart_order.UnitTests.test_UT_02_order_str) ... ok
+test_UT_03_orderitem_str (labs_tests.test_cart_order.UnitTests.test_UT_03_orderitem_str) ... ok
+test_UT_04_discount_percent_flat_and_cap (labs_tests.test_cart_order.UnitTests.test_UT_04_discount_percent_flat_and_cap) ... ERROR
+
+======================================================================
+ERROR: test_IT_07_home_page_loads_for_anonymous_visitor (labs_tests.test_cart_order.IntegrationTests.test_IT_07_home_page_loads_for_anonymous_visitor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 64, in test_IT_07_home_page_loads_for_anonymous_visitor
+    self.assertEqual(self.client.get('/').status_code, 200)
+                     ~~~~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 1128, in get
+    response = super().get(
+        path,
+    ...<4 lines>...
+        **extra,
+    )
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 475, in get
+    return self.generic(
+           ~~~~~~~~~~~~^
+        "GET",
+        ^^^^^^
+    ...<4 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 671, in generic
+    return self.request(**r)
+           ~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 1091, in request
+    self.check_exception(response)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 805, in check_exception
+    raise exc_value
+  File "/usr/local/lib/python3.13/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.13/site-packages/django/core/handlers/base.py", line 199, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/restaurants/views.py", line 6, in restaurant_list
+    return render(request, 'restaurants/restaurant_list.html', {'restaurants': restaurants})
+  File "/usr/local/lib/python3.13/site-packages/django/shortcuts.py", line 27, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/utils.py", line 113, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/base.py", line 1107, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/base.py", line 1068, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/base.py", line 1107, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/base.py", line 1068, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/usr/local/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/usr/local/lib/python3.13/site-packages/django/urls/resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+
+======================================================================
+ERROR: test_IT_08_login_page_loads (labs_tests.test_cart_order.IntegrationTests.test_IT_08_login_page_loads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 67, in test_IT_08_login_page_loads
+    self.assertEqual(self.client.get('/accounts/login/').status_code, 200)
+                     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 1128, in get
+    response = super().get(
+        path,
+    ...<4 lines>...
+        **extra,
+    )
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 475, in get
+    return self.generic(
+           ~~~~~~~~~~~~^
+        "GET",
+        ^^^^^^
+    ...<4 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 671, in generic
+    return self.request(**r)
+           ~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 1091, in request
+    self.check_exception(response)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/test/client.py", line 805, in check_exception
+    raise exc_value
+  File "/usr/local/lib/python3.13/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.13/site-packages/django/core/handlers/base.py", line 222, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/usr/local/lib/python3.13/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/usr/local/lib/python3.13/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: restaurants/login.html
+
+======================================================================
+ERROR: test_UT_01_qty_reads_int_and_legacy_dict (labs_tests.test_cart_order.UnitTests.test_UT_01_qty_reads_int_and_legacy_dict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 9, in test_UT_01_qty_reads_int_and_legacy_dict
+    from orders.views import _qty
+ImportError: cannot import name '_qty' from 'orders.views' (/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/orders/views.py)
+
+======================================================================
+ERROR: test_UT_04_discount_percent_flat_and_cap (labs_tests.test_cart_order.UnitTests.test_UT_04_discount_percent_flat_and_cap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 23, in test_UT_04_discount_percent_flat_and_cap
+    from orders.views import discount_for
+ImportError: cannot import name 'discount_for' from 'orders.views' (/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/orders/views.py)
+
+======================================================================
+FAIL: test_IT_02_full_order_flow_and_history (labs_tests.test_cart_order.IntegrationTests.test_IT_02_full_order_flow_and_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 41, in test_IT_02_full_order_flow_and_history
+    self.assertContains(r, 'Alice Rao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Couldn't find 'Alice Rao' in the following response
+b'\n<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>My Orders</title>\n    <link rel="stylesheet" href="/static/css/style.css">\n</head>\n<body>\n    <nav class="navbar">\n        <a class="brand" href="/">\xe2\x9a\xa1 QuickBite</a>\n        <div class="nav-links"><a href="/">Explore</a></div>\n    </nav>\n    <div class="container" style="max-width: 800px;">\n        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 24px;">Order History \xf0\x9f\x93\x9c</h2>\n        \n            \n                <div class="card" style="margin-bottom: 20px;">\n                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border);">\n                        <div>\n                            <strong style="font-size: 1.1rem;">Order #1</strong>\n                            <div style="color: var(--text-muted); font-size: 0.8rem;">Nov 07, 2026 - 14:26</div>\n                        </div>\n                        <span class="badge" style="background: #E6F8F6; color: var(--accent);">Preparing</span>\n                    </div>\n                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;"><strong>Deliver to:</strong>  \xe2\x80\x94 </p>\n                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); font-weight: 700;">\n                        <span>Total Paid</span>\n                        <span style="color: var(--primary);">$0.00</span>\n                    </div>\n                </div>\n            \n        \n    </div>\n</body>\n</html>'
+
+======================================================================
+FAIL: test_IT_04_checkout_page_shows_total (labs_tests.test_cart_order.IntegrationTests.test_IT_04_checkout_page_shows_total)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 53, in test_IT_04_checkout_page_shows_total
+    self.assertContains(self.client.get('/orders/checkout/'), '8.99')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Couldn't find '8.99' in the following response
+b'\n<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>Secure Checkout</title>\n    <link rel="stylesheet" href="/static/css/style.css">\n</head>\n<body>\n    <nav class="navbar">\n        <a class="brand" href="/">\xe2\x9a\xa1 QuickBite</a>\n        <div class="nav-links"><a href="/orders/cart/">\xe2\x86\x90 Back to Cart</a></div>\n    </nav>\n    <div class="form-box">\n        <h2>Secure Checkout</h2>\n        <div style="background: #FFF1F3; padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 24px; font-weight: 700; color: var(--primary);">\n            Total to Pay: $\n        </div>\n        <form method="POST">\n            <input type="hidden" name="csrfmiddlewaretoken" value="ydBBqK6uZGJOYnS5gBqlYbUHTRBmLKEJBK6lg0Et5UDUfMnYd7S5MxumpIQqS4xU">\n            <div class="form-group">\n                <label>Full Name</label>\n                <input type="text" name="full_name" required placeholder="John Doe">\n            </div>\n            <div class="form-group">\n                <label>Phone Number</label>\n                <input type="text" name="phone_number" required placeholder="+1 (555) 019-2834">\n            </div>\n            <div class="form-group">\n                <label>Delivery Address</label>\n                <textarea name="address" rows="3" required placeholder="Street address, apartment, suite..."></textarea>\n            </div>\n            <button type="submit" class="btn-submit">Place Order \xf0\x9f\x9a\x80</button>\n        </form>\n    </div>\n</body>\n</html>'
+
+======================================================================
+FAIL: test_IT_05_cannot_add_unavailable_item (labs_tests.test_cart_order.IntegrationTests.test_IT_05_cannot_add_unavailable_item)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 57, in test_IT_05_cannot_add_unavailable_item
+    self.assertNotIn(str(self.sold_out.id), self.cart())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '4' unexpectedly found in {'4': 1}
+
+======================================================================
+FAIL: test_IT_06_cannot_add_nonexistent_item (labs_tests.test_cart_order.IntegrationTests.test_IT_06_cannot_add_nonexistent_item)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 61, in test_IT_06_cannot_add_nonexistent_item
+    self.assertNotIn('99999', self.cart())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '99999' unexpectedly found in {'99999': 1}
+
+======================================================================
+FAIL: test_IT_09_empty_delivery_details_rejected (labs_tests.test_cart_order.IntegrationTests.test_IT_09_empty_delivery_details_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_cart_order.py", line 72, in test_IT_09_empty_delivery_details_rejected
+    self.assertEqual(Order.objects.count(), 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.897s
+
+FAILED (failures=5, errors=4)

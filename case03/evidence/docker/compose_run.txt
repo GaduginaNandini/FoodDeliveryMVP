@@ -1,0 +1,31 @@
+$ docker compose ps
+NAME          IMAGE                COMMAND                  SERVICE   CREATED              STATUS                        PORTS
+fixed-db-1    postgres:16-alpine   "/entrypoint.sh"         db        About a minute ago   Up About a minute (healthy)   5432/tcp
+fixed-web-1   fixed-web            "sh -c 'python manag…"   web       About a minute ago   Up About a minute             0.0.0.0:8000->8000/tcp
+
+$ docker compose exec db psql -U foodmvp -c "select id, full_name, phone_number, total_amount, status from orders_order;"
+ id |  full_name  |  phone_number   | total_amount |  status   
+----+-------------+-----------------+--------------+-----------
+  1 | Docker Demo | +91 90000 00000 |        17.98 | Preparing
+(1 row)
+
+ restaurants 
+-------------
+          10
+(1 row)
+
+$ docker compose logs web (tail)
+web-1  | [08/Nov/2026 18:49:44] "GET /orders/register/ HTTP/1.1" 200 2161
+web-1  | [08/Nov/2026 18:49:44] "GET /static/css/style.css HTTP/1.1" 200 5919
+web-1  | [08/Nov/2026 18:49:45] "POST /orders/register/ HTTP/1.1" 302 0
+web-1  | [08/Nov/2026 18:49:45] "GET / HTTP/1.1" 200 10189
+web-1  | [08/Nov/2026 18:49:45] "GET / HTTP/1.1" 200 10189
+web-1  | [08/Nov/2026 18:49:45] "GET /orders/cart/add/1/ HTTP/1.1" 302 0
+web-1  | [08/Nov/2026 18:49:45] "GET / HTTP/1.1" 200 10189
+web-1  | [08/Nov/2026 18:49:46] "GET /orders/cart/add/1/ HTTP/1.1" 302 0
+web-1  | [08/Nov/2026 18:49:46] "GET / HTTP/1.1" 200 10189
+web-1  | [08/Nov/2026 18:49:46] "GET /orders/cart/ HTTP/1.1" 200 2926
+web-1  | [08/Nov/2026 18:49:46] "GET /orders/checkout/ HTTP/1.1" 200 1527
+web-1  | [08/Nov/2026 18:49:47] "POST /orders/checkout/ HTTP/1.1" 302 0
+web-1  | [08/Nov/2026 18:49:47] "GET /orders/history/ HTTP/1.1" 200 1723
+web-1  | [08/Nov/2026 18:49:47] "GET /orders/history/ HTTP/1.1" 200 1723

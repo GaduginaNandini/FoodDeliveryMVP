@@ -1,0 +1,11 @@
+$ (edited file: kept label from feature/cart-checkout-label, moved the coupon hint into a title attribute)
+47:            <a href="{% url 'checkout' %}" class="checkout-btn" title="Apply your coupon first">Checkout securely →</a>
+remaining conflict markers: 0
+
+$ git add orders/templates/orders/cart.html && git commit -m "Merge feature/coupon-ui: resolve checkout button conflict"
+*   bf2110c Merge feature/coupon-ui: resolve checkout button conflict
+|\  
+| * f655287 Cart: hint about coupon on checkout button
+* | df305ef Cart: friendlier checkout button label
+|/  
+* 4fd4813 Initial cart page (from prototype)

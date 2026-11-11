@@ -1,0 +1,31 @@
+{
+ "def01_home_500": 500,
+ "def02_login_500": 500,
+ "orig_history_text": "\u26a1 QuickBite\nExplore\nOrder History \ud83d\udcdc\nOrder #2\nNov 08, 2026 - 07:15\nPREPARING\n\nDeliver to: \u2014\n\nTotal Paid\n$0.00",
+ "fixed_home": 200,
+ "fixed_login": 200,
+ "taps_to_order": 4,
+ "final_url": "http://localhost:8102/orders/history/",
+ "load_ms": {
+  "menu": {
+   "avg": 122.8,
+   "p95": 131.2,
+   "min": 113.6
+  },
+  "cart": {
+   "avg": 121.1,
+   "p95": 128.4,
+   "min": 114.7
+  },
+  "checkout": {
+   "avg": 119.0,
+   "p95": 125.1,
+   "min": 113.7
+  },
+  "home": {
+   "avg": 123.6,
+   "p95": 129.3,
+   "min": 113.5
+  }
+ }
+}

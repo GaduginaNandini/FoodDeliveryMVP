@@ -1,0 +1,10 @@
+test_R1_order_and_items_are_atomic  ... ok
+test_R2a_corrupt_quantity_does_not_crash_cart  ... ok
+test_R2b_zero_or_negative_quantity_never_priced  ... ok
+test_R3a_cart_views_should_not_change_state_on_GET  ... expected failure
+test_R3b_no_open_redirect_via_referer  ... ok
+test_R4_free_order_not_possible  ... expected failure
+test_R7_register_login_works_with_single_backend  ... ok
+test_R8_order_history_query_count_constant  ... ok
+Ran 8 tests in 1.899s
+OK (expected failures=2)

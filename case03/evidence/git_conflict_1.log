@@ -1,0 +1,25 @@
+$ git checkout -b feature/cart-checkout-label
+df305ef Cart: friendlier checkout button label
+
+$ git checkout main && git checkout -b feature/coupon-ui
+f655287 Cart: hint about coupon on checkout button
+
+$ git checkout main && git merge feature/cart-checkout-label
+ orders/templates/orders/cart.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git merge feature/coupon-ui
+Auto-merging orders/templates/orders/cart.html
+CONFLICT (content): Merge conflict in orders/templates/orders/cart.html
+Automatic merge failed; fix conflicts and then commit the result.
+
+$ git status --short
+UU orders/templates/orders/cart.html
+
+$ grep -n -B1 -A5 "<<<<<<<" orders/templates/orders/cart.html
+47:<<<<<<< HEAD
+48-            <a href="{% url 'checkout' %}" class="checkout-btn">Checkout securely →</a>
+49-=======
+50-            <a href="{% url 'checkout' %}" class="checkout-btn">Pay now (apply coupon first)</a>
+51->>>>>>> feature/coupon-ui
+52-        {% else %}

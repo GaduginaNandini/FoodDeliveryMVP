@@ -1,0 +1,9 @@
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+test_add_3_items_apply_coupon_place_order (labs_tests.test_selenium_pom.OrderFlowPOM.test_add_3_items_apply_coupon_place_order) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.481s
+
+OK

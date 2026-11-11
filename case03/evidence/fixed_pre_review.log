@@ -1,0 +1,22 @@
+test_R1_order_and_items_are_atomic  ... FAIL
+test_R2a_corrupt_quantity_does_not_crash_cart  ... ERROR
+test_R2b_zero_or_negative_quantity_never_priced  ... FAIL
+test_R3a_cart_views_should_not_change_state_on_GET  ... FAIL
+test_R3b_no_open_redirect_via_referer  ... FAIL
+test_R4_free_order_not_possible  ... FAIL
+test_R7_register_login_works_with_single_backend  ... ok
+test_R8_order_history_query_count_constant  ... ok
+ERROR: test_R2a_corrupt_quantity_does_not_crash_cart (labs_tests.test_ai_review_checks.ReviewSuggestions.test_R2a_corrupt_quantity_does_not_crash_cart)
+ValueError: invalid literal for int() with base 10: 'abc'
+FAIL: test_R1_order_and_items_are_atomic (labs_tests.test_ai_review_checks.ReviewSuggestions.test_R1_order_and_items_are_atomic)
+AssertionError: 1 != 0 : orphan Order left behind
+FAIL: test_R2b_zero_or_negative_quantity_never_priced (labs_tests.test_ai_review_checks.ReviewSuggestions.test_R2b_zero_or_negative_quantity_never_priced)
+AssertionError: Decimal('-26.97') != 0
+FAIL: test_R3a_cart_views_should_not_change_state_on_GET (labs_tests.test_ai_review_checks.ReviewSuggestions.test_R3a_cart_views_should_not_change_state_on_GET)
+AssertionError: 302 != 405
+FAIL: test_R3b_no_open_redirect_via_referer (labs_tests.test_ai_review_checks.ReviewSuggestions.test_R3b_no_open_redirect_via_referer)
+AssertionError: 'evil.example' unexpectedly found in 'https://evil.example/phish'
+FAIL: test_R4_free_order_not_possible (labs_tests.test_ai_review_checks.ReviewSuggestions.test_R4_free_order_not_possible)
+AssertionError: 1 != 0
+Ran 8 tests in 2.078s
+FAILED (failures=5, errors=1)

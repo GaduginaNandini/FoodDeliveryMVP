@@ -1,0 +1,21 @@
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+test_IT_01_browse_menu_add_view_cart (labs_tests.test_cart_order.IntegrationTests.test_IT_01_browse_menu_add_view_cart) ... ok
+test_IT_02_full_order_flow_and_history (labs_tests.test_cart_order.IntegrationTests.test_IT_02_full_order_flow_and_history) ... ok
+test_IT_03_history_shows_only_own_orders (labs_tests.test_cart_order.IntegrationTests.test_IT_03_history_shows_only_own_orders) ... ok
+test_IT_04_checkout_page_shows_total (labs_tests.test_cart_order.IntegrationTests.test_IT_04_checkout_page_shows_total) ... ok
+test_IT_05_cannot_add_unavailable_item (labs_tests.test_cart_order.IntegrationTests.test_IT_05_cannot_add_unavailable_item) ... ok
+test_IT_06_cannot_add_nonexistent_item (labs_tests.test_cart_order.IntegrationTests.test_IT_06_cannot_add_nonexistent_item) ... ok
+test_IT_07_home_page_loads_for_anonymous_visitor (labs_tests.test_cart_order.IntegrationTests.test_IT_07_home_page_loads_for_anonymous_visitor) ... ok
+test_IT_08_login_page_loads (labs_tests.test_cart_order.IntegrationTests.test_IT_08_login_page_loads) ... ok
+test_IT_09_empty_delivery_details_rejected (labs_tests.test_cart_order.IntegrationTests.test_IT_09_empty_delivery_details_rejected) ... ok
+test_UT_01_qty_reads_int_and_legacy_dict (labs_tests.test_cart_order.UnitTests.test_UT_01_qty_reads_int_and_legacy_dict) ... ok
+test_UT_02_order_str (labs_tests.test_cart_order.UnitTests.test_UT_02_order_str) ... ok
+test_UT_03_orderitem_str (labs_tests.test_cart_order.UnitTests.test_UT_03_orderitem_str) ... ok
+test_UT_04_discount_percent_flat_and_cap (labs_tests.test_cart_order.UnitTests.test_UT_04_discount_percent_flat_and_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.901s
+
+OK

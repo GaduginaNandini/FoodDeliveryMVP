@@ -1,0 +1,45 @@
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+test_AI_TC_01_add_item_creates_cart_line (labs_tests.test_ai10.AIGenerated10.test_AI_TC_01_add_item_creates_cart_line) ... ok
+test_AI_TC_02_adding_same_item_twice_gives_quantity_two (labs_tests.test_ai10.AIGenerated10.test_AI_TC_02_adding_same_item_twice_gives_quantity_two) ... ok
+test_AI_TC_03_minus_button_reduces_quantity (labs_tests.test_ai10.AIGenerated10.test_AI_TC_03_minus_button_reduces_quantity) ... ok
+test_AI_TC_04_minus_on_last_unit_removes_line (labs_tests.test_ai10.AIGenerated10.test_AI_TC_04_minus_on_last_unit_removes_line) ... ok
+test_AI_TC_05_cart_total_is_sum_of_price_times_quantity (labs_tests.test_ai10.AIGenerated10.test_AI_TC_05_cart_total_is_sum_of_price_times_quantity) ... ok
+test_AI_TC_06_anonymous_checkout_redirects_to_login (labs_tests.test_ai10.AIGenerated10.test_AI_TC_06_anonymous_checkout_redirects_to_login) ... ok
+test_AI_TC_07_empty_cart_checkout_redirects_to_cart (labs_tests.test_ai10.AIGenerated10.test_AI_TC_07_empty_cart_checkout_redirects_to_cart) ... ok
+test_AI_TC_08_valid_order_creates_items_and_clears_cart (labs_tests.test_ai10.AIGenerated10.test_AI_TC_08_valid_order_creates_items_and_clears_cart) ... ok
+test_AI_TC_09_order_stores_delivery_details (labs_tests.test_ai10.AIGenerated10.test_AI_TC_09_order_stores_delivery_details) ... FAIL
+test_AI_TC_10_order_stores_total_amount (labs_tests.test_ai10.AIGenerated10.test_AI_TC_10_order_stores_total_amount) ... FAIL
+
+======================================================================
+FAIL: test_AI_TC_09_order_stores_delivery_details (labs_tests.test_ai10.AIGenerated10.test_AI_TC_09_order_stores_delivery_details)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_ai10.py", line 55, in test_AI_TC_09_order_stores_delivery_details
+    self.assertEqual((o.full_name, o.phone_number, o.address),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     (self.DETAILS['full_name'], self.DETAILS['phone_number'], self.DETAILS['address']))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('', '', '') != ('Alice Rao', '+91 98765 43210', '12 MG Road, Pune')
+
+First differing element 0:
+''
+'Alice Rao'
+
+- ('', '', '')
++ ('Alice Rao', '+91 98765 43210', '12 MG Road, Pune')
+
+======================================================================
+FAIL: test_AI_TC_10_order_stores_total_amount (labs_tests.test_ai10.AIGenerated10.test_AI_TC_10_order_stores_total_amount)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/b33a32f1-3da1-5024-ad7d-b6dafdb15e8a/scratchpad/w2/orig/labs_tests/test_ai10.py", line 61, in test_AI_TC_10_order_stores_total_amount
+    self.assertEqual(Order.objects.get().total_amount, Decimal('21.97'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decimal('0.00') != Decimal('21.97')
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.049s
+
+FAILED (failures=2)

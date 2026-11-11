@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    triggers { githubPush() }                    // build on every push
+    options  { timestamps() }
+    stages {
+        stage('Checkout') { steps { checkout scm } }
+        stage('Build') {
+            steps {
+                sh 'python3 -m venv .venv'
+                sh '. .venv/bin/activate && pip install -r requirements.txt'
+                sh '. .venv/bin/activate && python manage.py check && python manage.py makemigrations --check --dry-run'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '. .venv/bin/activate && python manage.py test labs_tests.test_ai10 labs_tests.test_cart_order labs_tests.test_equivalence labs_tests.test_ai_review_checks_post -v 2'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'zip -qr foodmvp-${BUILD_NUMBER}.zip config orders restaurants static manage.py requirements.txt Dockerfile docker-compose.yml'
+                archiveArtifacts artifacts: 'foodmvp-*.zip', fingerprint: true
+            }
+        }
+    }
+    post {
+        failure {
+            mail to: 'team@example.com',
+                 subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Build failed at ${env.BUILD_URL}console - the release was NOT packaged."
+        }
+        success { echo 'Build, tests and package passed - artifact archived.' }
+    }
+}

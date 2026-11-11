@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: foodmvp
+      POSTGRES_USER: foodmvp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in your shell or .env (not committed)}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U foodmvp -d foodmvp"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_DB: foodmvp
+      POSTGRES_USER: foodmvp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      ALLOWED_HOSTS: localhost,127.0.0.1
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py seed_restaurants &&
+             python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  pgdata:

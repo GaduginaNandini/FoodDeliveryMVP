@@ -1,0 +1,20 @@
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+test_EC_C1_valid_percent_coupon (labs_tests.test_equivalence.CouponClasses.test_EC_C1_valid_percent_coupon) ... ok
+test_EC_C2_valid_flat_coupon (labs_tests.test_equivalence.CouponClasses.test_EC_C2_valid_flat_coupon) ... ok
+test_EC_C3_valid_lowercase_and_spaces (labs_tests.test_equivalence.CouponClasses.test_EC_C3_valid_lowercase_and_spaces) ... ok
+test_EC_C4_invalid_unknown_code_no_discount (labs_tests.test_equivalence.CouponClasses.test_EC_C4_invalid_unknown_code_no_discount) ... ok
+test_EC_C5_invalid_empty_code_no_discount (labs_tests.test_equivalence.CouponClasses.test_EC_C5_invalid_empty_code_no_discount) ... ok
+test_EC_C6_boundary_flat_larger_than_subtotal_total_not_negative (labs_tests.test_equivalence.CouponClasses.test_EC_C6_boundary_flat_larger_than_subtotal_total_not_negative) ... ok
+test_EC_C7_discount_is_stored_in_order_total (labs_tests.test_equivalence.CouponClasses.test_EC_C7_discount_is_stored_in_order_total) ... ok
+test_EC_Q1_valid_lower_boundary_1 (labs_tests.test_equivalence.QuantityClasses.test_EC_Q1_valid_lower_boundary_1) ... ok
+test_EC_Q2_valid_typical_5 (labs_tests.test_equivalence.QuantityClasses.test_EC_Q2_valid_typical_5) ... ok
+test_EC_Q3_valid_upper_boundary_20 (labs_tests.test_equivalence.QuantityClasses.test_EC_Q3_valid_upper_boundary_20) ... ok
+test_EC_Q4_invalid_above_max_21_is_capped (labs_tests.test_equivalence.QuantityClasses.test_EC_Q4_invalid_above_max_21_is_capped) ... ok
+test_EC_Q5_invalid_zero_or_below_removes_line (labs_tests.test_equivalence.QuantityClasses.test_EC_Q5_invalid_zero_or_below_removes_line) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 2.523s
+
+OK

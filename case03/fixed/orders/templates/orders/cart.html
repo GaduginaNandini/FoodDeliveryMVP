@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart - QuickBite</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; font-family: sans-serif; padding: 40px; }
+        .cart-container { max-width: 800px; margin: 0 auto; background: rgba(30, 41, 59, 0.7); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+        h1 { color: #f43f5e; margin-bottom: 20px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .btn-group { display: flex; gap: 10px; align-items: center; }
+        .btn { background: #f43f5e; color: white; padding: 6px 12px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .btn:hover { background: #e11d48; }
+        .checkout-btn { display: inline-block; margin-top: 20px; background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .checkout-btn:hover { background: #059669; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #94a3b8; text-decoration: none; }
+        .back-link:hover { color: white; }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <a href="{% url 'restaurant_list' %}" class="back-link">← Back to Restaurants</a>
+        <h1>Your Cart 🛒</h1>
+        
+        {% if cart_items %}
+            {% for item in cart_items %}
+                <div class="cart-item">
+                    <div>
+                        <h3>{{ item.food.name }}</h3>
+                        <p>${{ item.food.price }} each</p>
+                    </div>
+                    <div class="btn-group">
+                        <a href="{% url 'remove_from_cart' item.food.id %}" class="btn">-</a>
+                        <span>Qty: {{ item.quantity }}</span>
+                        <a href="{% url 'add_to_cart' item.food.id %}" class="btn">+</a>
+                        <span style="margin-left: 20px; font-weight: bold;">${{ item.subtotal }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <form method="POST" action="{% url 'apply_coupon' %}" style="margin-top:20px;">
+                {% csrf_token %}
+                <input type="text" name="coupon" id="coupon" placeholder="Coupon code" value="{{ coupon|default:'' }}">
+                <button type="submit" id="apply-coupon" class="btn">Apply</button>
+                {% if coupon_error %}<span id="coupon-error" style="color:#f43f5e;">{{ coupon_error }}</span>{% endif %}
+            </form>
+            <div style="margin-top: 20px; text-align: right; font-size: 1.1rem;">
+                <div>Subtotal: $<span id="subtotal">{{ subtotal }}</span></div>
+                {% if discount %}<div>Discount ({{ coupon }}): -$<span id="discount">{{ discount }}</span></div>{% endif %}
+                <strong>Total Price: $<span id="total">{{ total_price }}</span></strong>
+            </div>
+            
+            <a href="{% url 'checkout' %}" id="checkout-link" class="checkout-btn">Proceed to Checkout</a>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

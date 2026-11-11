@@ -1,0 +1,15 @@
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+test_legacy_dict_value_is_upgraded (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_legacy_dict_value_is_upgraded) ... ok
+test_new_item_starts_at_1 (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_new_item_starts_at_1) ... ok
+test_other_items_untouched (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_other_items_untouched) ... ok
+test_redirects_back_to_referer (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_redirects_back_to_referer) ... ok
+test_redirects_to_list_without_referer (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_redirects_to_list_without_referer) ... ok
+test_repeat_add_increments (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_repeat_add_increments) ... ok
+test_unknown_id_behaviour_is_preserved (labs_tests.test_refactor_add_to_cart.AddToCartBehaviour.test_unknown_id_behaviour_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.414s
+
+OK

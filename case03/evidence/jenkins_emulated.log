@@ -1,0 +1,60 @@
+################ BUILD #1 (your prototype as submitted)
+Started by GitHub push (emulated)  — Build #1
+[07:14:28] [Pipeline] { (Checkout)
+[07:14:28] > git checkout main  (workspace: orig_ci)
+[07:14:28] [Pipeline] { (Build)
+[07:14:28] + pip install -r requirements.txt
+   requirements resolved
+[07:14:29] + python manage.py check
+   System check identified no issues (0 silenced).
+[07:14:30] + python manage.py makemigrations --check --dry-run
+   No changes detected
+[07:14:30] [Pipeline] { (Test)
+[07:14:30] + python manage.py test labs_tests.test_ai10 labs_tests.test_cart_order labs_tests.test_equivalence
+   ERROR: test_IT_07_home_page_loads_for_anonymous_visitor 
+   ERROR: test_IT_08_login_page_loads 
+   ERROR: test_UT_01_qty_reads_int_and_legacy_dict 
+   ERROR: test_UT_04_discount_percent_flat_and_cap 
+   FAIL: test_AI_TC_09_order_stores_delivery_details 
+   FAIL: test_AI_TC_10_order_stores_total_amount 
+   FAIL: test_IT_02_full_order_flow_and_history 
+   FAIL: test_IT_04_checkout_page_shows_total 
+   FAIL: test_IT_05_cannot_add_unavailable_item 
+   FAIL: test_IT_06_cannot_add_nonexistent_item 
+   FAIL: test_IT_09_empty_delivery_details_rejected 
+   FAIL: test_EC_C1_valid_percent_coupon 
+   FAIL: test_EC_C2_valid_flat_coupon 
+   FAIL: test_EC_C3_valid_lowercase_and_spaces 
+   FAIL: test_EC_C6_boundary_flat_larger_than_subtotal_total_not_negative 
+   FAIL: test_EC_C7_discount_is_stored_in_order_total 
+   FAIL: test_EC_Q4_invalid_above_max_21_is_capped 
+   Ran 35 tests in 10.273s
+   FAILED (failures=13, errors=4)
+ERROR: script returned exit code 1
+[Pipeline] // stage (Test) FAILED
+Stage 'Package' skipped due to earlier failure(s)
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] mail  -> to: team@example.com | subject: FAILED: FoodDeliveryMVP #1   (simulated: no SMTP in sandbox)
+Finished: FAILURE
+
+################ BUILD #2 (after fixing DEF-03/04, coupon, review fixes)
+Started by GitHub push (emulated)  — Build #2
+[07:14:41] [Pipeline] { (Checkout)
+[07:14:41] > git checkout main  (workspace: fixed)
+[07:14:41] [Pipeline] { (Build)
+[07:14:41] + pip install -r requirements.txt
+   requirements resolved
+[07:14:42] + python manage.py check
+   System check identified no issues (0 silenced).
+[07:14:42] + python manage.py makemigrations --check --dry-run
+   No changes detected
+[07:14:42] [Pipeline] { (Test)
+[07:14:42] + python manage.py test labs_tests.test_ai10 labs_tests.test_cart_order labs_tests.test_equivalence
+   Ran 35 tests in 10.298s
+   OK
+[07:14:53] [Pipeline] { (Package)
+[07:14:53] + zip -qr foodmvp-2.zip config orders restaurants static manage.py requirements.txt Dockerfile docker-compose.yml
+   archiveArtifacts: foodmvp-2.zip (52 KB)
+[Pipeline] { (Declarative: Post Actions)
+Build, tests and package passed - artifact archived.
+Finished: SUCCESS

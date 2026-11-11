@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmed</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="card" style="max-width: 500px; text-align: center; padding: 48px;">
+        <div style="font-size: 3rem; margin-bottom: 12px;">🎉</div>
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Order Placed Successfully!</h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Thank you for your order, <strong>{{ order.full_name }}</strong>. Your Order ID is <strong>#{{ order.id }}</strong>.</p>
+        <div style="background: #F8F9FA; padding: 16px; border-radius: var(--radius-sm); margin-bottom: 24px; font-size: 0.9rem; text-align: left;">
+            <strong>Delivery Address:</strong><br>{{ order.address }}
+        </div>
+        <a href="{% url 'restaurant_list' %}" class="btn-submit" style="text-decoration: none; display: block;">Back to Home</a>
+    </div>
+</body>
+</html>
