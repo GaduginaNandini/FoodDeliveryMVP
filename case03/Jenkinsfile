@@ -1,39 +1,69 @@
-// Pipeline for the repository layout  <repo>/case03/{original,fixed}
-// Run it with TARGET = fixed (should pass) and TARGET = original (should fail).
 pipeline {
     agent any
-    parameters { choice(name: 'TARGET', choices: ['fixed', 'original'], description: 'Which copy to build') }
-    options { timestamps() }
+
+    parameters {
+        choice(name: 'TARGET', choices: ['fixed', 'original'],
+               description: 'Which copy to build')
+    }
+
+    options {
+        timestamps()
+    }
+
     stages {
-        stage('Checkout') { steps { checkout scm } }
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
                 dir("case03/${params.TARGET}") {
-                    sh 'python3 -m venv ../.venv-${TARGET}'
-                    sh '. ../.venv-${TARGET}/bin/activate && pip install -r ../fixed/requirements.txt'
-                    sh 'rm -rf labs_tests && cp -r ../fixed/labs_tests labs_tests && rm -f labs_tests/run_tests.sh'
-                    sh '. ../.venv-${TARGET}/bin/activate && python manage.py check'
+                    sh "python3 -m venv ../.venv-${params.TARGET}"
+
+                    sh ". ../.venv-${params.TARGET}/bin/activate && pip install -r ../fixed/requirements.txt"
+
+                    script {
+                        if (params.TARGET == 'original') {
+                            sh 'rm -rf labs_tests'
+                            sh 'cp -r ../fixed/labs_tests labs_tests'
+                            sh 'rm -f labs_tests/run_tests.sh'
+                        }
+                    }
+
+                    sh ". ../.venv-${params.TARGET}/bin/activate && python manage.py check"
                 }
             }
         }
+
         stage('Test') {
             steps {
                 dir("case03/${params.TARGET}") {
-                    sh '. ../.venv-${TARGET}/bin/activate && python manage.py test labs_tests.test_ai10 labs_tests.test_cart_order labs_tests.test_equivalence -v 2'
+                    sh ". ../.venv-${params.TARGET}/bin/activate && python manage.py test labs_tests.test_ai10 labs_tests.test_cart_order labs_tests.test_equivalence -v 2"
                 }
             }
         }
+
         stage('Package') {
             steps {
                 dir("case03/${params.TARGET}") {
-                    sh 'zip -qr ../foodmvp-${BUILD_NUMBER}.zip config orders restaurants static manage.py'
+                    sh "zip -qr ../foodmvp-${env.BUILD_NUMBER}.zip config orders restaurants static manage.py"
                 }
-                archiveArtifacts artifacts: 'case03/foodmvp-*.zip', fingerprint: true
+
+                archiveArtifacts artifacts: 'case03/foodmvp-*.zip',
+                                 fingerprint: true
             }
         }
     }
+
     post {
-        failure { echo "Build failed - the release was NOT packaged." }
-        success { echo 'Build, tests and package passed - artifact archived.' }
+        failure {
+            echo 'Build failed - the release was NOT packaged.'
+        }
+
+        success {
+            echo 'Build, tests and package passed - artifact archived.'
+        }
     }
 }
