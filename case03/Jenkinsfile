@@ -1,9 +1,13 @@
+```groovy
 pipeline {
     agent any
 
     parameters {
-        choice(name: 'TARGET', choices: ['fixed', 'original'],
-               description: 'Which copy to build')
+        choice(
+            name: 'TARGET',
+            choices: ['fixed', 'original'],
+            description: 'Select the application version to build'
+        )
     }
 
     options {
@@ -11,6 +15,7 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -20,6 +25,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("case03/${params.TARGET}") {
+
                     sh "python3 -m venv ../.venv-${params.TARGET}"
 
                     sh ". ../.venv-${params.TARGET}/bin/activate && pip install -r ../fixed/requirements.txt"
@@ -45,25 +51,50 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            when {
+                expression {
+                    params.TARGET == 'fixed'
+                }
+            }
+
+            steps {
+                dir("case03/fixed") {
+                    script {
+                        def scannerHome = tool 'SonarScanner'
+
+                        withSonarQubeEnv('SonarQube') {
+                            sh """
+                                "\${scannerHome}/bin/sonar-scanner" \
+                                -Dsonar.projectKey=quickbite \
+                                -Dsonar.projectName=QuickBite \
+                                -Dsonar.sources=. \
+                                -Dsonar.exclusions=**/migrations/**,**/__pycache__/**,**/*.pyc,**/.venv/**,**/venv/**
+                            """
+                        }
+                    }
+                }
+            }
+        }
+
         stage('Package') {
             steps {
                 dir("case03/${params.TARGET}") {
                     sh "zip -qr ../foodmvp-${env.BUILD_NUMBER}.zip config orders restaurants static manage.py"
                 }
 
-                archiveArtifacts artifacts: 'case03/foodmvp-*.zip',
-                                 fingerprint: true
+                archiveArtifacts(
+                    artifacts: 'case03/foodmvp-*.zip',
+                    fingerprint: true
+                )
             }
         }
     }
 
     post {
         failure {
-            echo 'Build failed - the release was NOT packaged.'
+            echo 'Build failed - the release was NOT successfully completed.'
         }
 
         success {
-            echo 'Build, tests and package passed - artifact archived.'
-        }
-    }
-}
+            echo 'Build, tests,
