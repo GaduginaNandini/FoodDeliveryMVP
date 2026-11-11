@@ -1,13 +1,9 @@
-```groovy
 pipeline {
     agent any
 
     parameters {
-        choice(
-            name: 'TARGET',
-            choices: ['fixed', 'original'],
-            description: 'Select the application version to build'
-        )
+        choice(name: 'TARGET', choices: ['fixed', 'original'],
+               description: 'Select application version')
     }
 
     options {
@@ -15,7 +11,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -25,9 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("case03/${params.TARGET}") {
-
                     sh "python3 -m venv ../.venv-${params.TARGET}"
-
                     sh ". ../.venv-${params.TARGET}/bin/activate && pip install -r ../fixed/requirements.txt"
 
                     script {
@@ -53,13 +46,10 @@ pipeline {
 
         stage('SonarQube Analysis') {
             when {
-                expression {
-                    params.TARGET == 'fixed'
-                }
+                expression { params.TARGET == 'fixed' }
             }
-
             steps {
-                dir("case03/fixed") {
+                dir('case03/fixed') {
                     script {
                         def scannerHome = tool 'SonarScanner'
 
@@ -93,8 +83,10 @@ pipeline {
 
     post {
         failure {
-            echo 'Build failed - the release was NOT successfully completed.'
+            echo 'Build failed.'
         }
-
         success {
-            echo 'Build, tests,
+            echo 'Build, tests, SonarQube analysis and packaging completed successfully.'
+        }
+    }
+}
